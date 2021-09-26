@@ -1,0 +1,36 @@
+version: "3.7"
+
+services:
+  nginxrmq:
+    build: nginx/.
+    ports:
+      - "5000:5000"
+      - "15000:15000"
+
+  rabbitmq1:
+    build: rabbitmq/.
+    environment:
+      - RABBITMQ_CONFIG_FILE=/etc/rabbitmq/rabbitmq-custom
+      - RABBITMQ_SERVER_ADDITIONAL_ERL_ARGS=-setcookie a1680567d1bb4f4bbd4dd0d577bb454a
+      - RABBITMQ_NODENAME=rabbit@rabbitmq1
+    ports:
+      - "5600:5672"
+      - "15672:15672"
+
+  rabbitmq2:
+    build: rabbitmq/.
+    environment:
+      - RABBITMQ_CONFIG_FILE=/etc/rabbitmq/rabbitmq-custom
+      - RABBITMQ_SERVER_ADDITIONAL_ERL_ARGS=-setcookie a1680567d1bb4f4bbd4dd0d577bb454a
+      - RABBITMQ_NODENAME=rabbit@rabbitmq2
+    ports:
+      - "5700:5672"
+
+  rabbitmq3:
+    build: rabbitmq/.
+    environment:
+      - RABBITMQ_CONFIG_FILE=/etc/rabbitmq/rabbitmq-custom
+      - RABBITMQ_SERVER_ADDITIONAL_ERL_ARGS=-setcookie a1680567d1bb4f4bbd4dd0d577bb454a
+      - RABBITMQ_NODENAME=rabbit@rabbitmq3
+    ports:
+      - "5800:5672"
