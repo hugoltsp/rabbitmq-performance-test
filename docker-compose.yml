@@ -15,7 +15,7 @@ services:
       - RABBITMQ_NODENAME=rabbit@rabbitmq1
     ports:
       - "5600:5672"
-      - "15672:15672"
+      - "15670:15672"
 
   rabbitmq2:
     build: rabbitmq/.
@@ -25,6 +25,7 @@ services:
       - RABBITMQ_NODENAME=rabbit@rabbitmq2
     ports:
       - "5700:5672"
+      - "15671:15672"
 
   rabbitmq3:
     build: rabbitmq/.
@@ -34,3 +35,4 @@ services:
       - RABBITMQ_NODENAME=rabbit@rabbitmq3
     ports:
       - "5800:5672"
+      - "15672:15672"
