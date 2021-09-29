@@ -28,8 +28,7 @@
             "apply-to": "queues",
             "pattern": "^.*",
             "definition": {
-                "ha-mode": "exactly",
-                "ha-params": 2,
+                "ha-mode": "all",
                 "ha-sync-mode": "automatic"
             }
         }
@@ -38,7 +37,7 @@
         {
             "name": "my-exchange",
             "vhost": "/",
-            "type": "fanout",
+            "type": "topic",
             "durable": true,
             "auto_delete": false,
             "internal": false,
@@ -49,7 +48,7 @@
         {
             "name": "my-exchange-dlx",
             "vhost": "/",
-            "type": "fanout",
+            "type": "topic",
             "durable": true,
             "auto_delete": false,
             "internal": true,
@@ -65,7 +64,7 @@
             "arguments": {
                 "x-dead-letter-exchange": "my-exchange-dlx",
                 "x-dead-letter-routing-key": "my.first.queue.dlx",
-                "x-queue-type": "quorum"
+                "x-queue-type": "classic"
             }
         },
         {
@@ -85,7 +84,7 @@
             "arguments": {
                 "x-dead-letter-exchange": "my-exchange-dlx",
                 "x-dead-letter-routing-key": "my.second.queue.dlx",
-                "x-queue-type": "quorum"
+                "x-queue-type": "classic"
             }
         },
         {
